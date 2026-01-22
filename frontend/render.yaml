@@ -2,24 +2,16 @@ services:
   - type: web
     name: fovea-opticals-frontend
     env: static
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
-    pullRequestPreviewsEnabled: true
     headers:
       - path: /*
-        name: X-Frame-Options
-        value: SAMEORIGIN
-      - path: /*
-        name: X-XSS-Protection
-        value: 1; mode=block
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
+        name: Cache-Control
+        value: public, max-age=3600
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
     envVars:
       - key: REACT_APP_API_URL
-        value: https://fovea-opticals-backend.onrender.com/api
+        value: https://fovea-opticals-api.onrender.com/api

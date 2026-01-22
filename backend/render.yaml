@@ -1,11 +1,9 @@
 services:
   - type: web
-    name: fovea-opticals-backend
+    name: fovea-opticals-api
     env: node
-    plan: free
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
@@ -19,3 +17,4 @@ services:
         sync: false
       - key: ZOHO_APP_PASSWORD
         sync: false
+    healthCheckPath: /api/health

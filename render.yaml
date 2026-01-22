@@ -3,7 +3,6 @@ services:
   - type: web
     name: fovea-opticals-api
     env: node
-    plan: starter
     region: oregon
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
