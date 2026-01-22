@@ -1,11 +1,10 @@
-# render.yaml
 services:
   # Backend Service
   - type: web
     name: fovea-opticals-api
     env: node
-    plan: free
-    region: oregon  # or singapore, frankfurt, ohio
+    plan: starter
+    region: oregon
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
     envVars:
@@ -17,22 +16,31 @@ services:
         sync: false
       - key: PORT
         value: 10000
+      - key: ZOHO_MAIL
+        sync: false
+      - key: ZOHO_APP_PASSWORD
+        sync: false
     healthCheckPath: /api/health
     autoDeploy: true
   
   # Frontend Service
   - type: web
-    name: fovea-opticals
+    name: fovea-opticals-frontend
     env: static
-    plan: free
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/build
     headers:
       - path: /*
         name: Cache-Control
         value: public, max-age=3600
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://fovea-opticals-api.onrender.com/api
     autoDeploy: true
