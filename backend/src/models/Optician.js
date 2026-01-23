@@ -30,7 +30,7 @@ const opticianSchema = new mongoose.Schema({
     lowercase: true
   },
   phone: {
-    type: String,
+    type: Number,
     trim: true
   },
   isAvailable: {

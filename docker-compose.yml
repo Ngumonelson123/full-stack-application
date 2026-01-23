@@ -1,26 +1,18 @@
-version: '3.8'
-
 services:
-  # MongoDB service
   mongodb:
     image: mongo:6.0
     container_name: fovea-mongodb
     restart: unless-stopped
     ports:
       - "27017:27017"
-    env_file:
-      - .env
     volumes:
       - mongodb_data:/data/db
       - ./backend/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - fovea-network
 
-  # Backend service
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ngumonelson123/fovea-opticals-backend:latest
     container_name: fovea-backend
     restart: unless-stopped
     ports:
@@ -29,31 +21,30 @@ services:
       - ./backend/.env
     depends_on:
       - mongodb
-    volumes:
-      - ./backend/src:/app/src
     networks:
       - fovea-network
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"]
       interval: 30s
       timeout: 10s
       retries: 3
 
-  # Frontend service
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ngumonelson123/fovea-opticals-frontend:latest
     container_name: fovea-frontend
     restart: unless-stopped
     ports:
       - "3000:3000"
-    env_file:
-      - ./frontend/.env
     depends_on:
       - backend
     networks:
       - fovea-network
+
+    # ✅ FIX: override broken /etc/nginx/nginx.conf in the image
+    volumes:
+      - ./frontend/nginx-main.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend/default.conf:/etc/nginx/conf.d/default.conf:ro
+
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
       interval: 30s
@@ -62,7 +53,6 @@ services:
 
 volumes:
   mongodb_data:
-    driver: local
 
 networks:
   fovea-network:

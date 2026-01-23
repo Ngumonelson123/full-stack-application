@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     default: 'user'
   },
   phone: {
-    type: String,
+    type: Number,
     trim: true
   },
   isActive: {
