@@ -117,6 +117,7 @@ exports.getMe = async (req, res) => {
 
     res.json({ success: true, user });
   } catch (error) {
+    console.error('❌ GetMe error:', error.message);
     res.status(500).json({ 
       success: false,
       error: 'Failed to get user information' 

@@ -1,6 +1,7 @@
 // src/pages/BookAppointment.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { appointmentsAPI } from "../services/api";
 import axios from "axios";
 
 const BookAppointment = () => {
@@ -95,10 +96,7 @@ const BookAppointment = () => {
 
       console.log("Sending appointment:", appointmentData);
 
-      const response = await axios.post(
-        `${API_BASE_URL}/appointments`,
-        appointmentData,
-      );
+      const response = await appointmentsAPI.create(appointmentData);
 
       console.log("Appointment response:", response.data);
 

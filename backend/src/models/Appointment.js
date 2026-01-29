@@ -13,11 +13,11 @@ const appointmentSchema = new mongoose.Schema({
     trim: true
   },
   patientPhone: {
-    type: Number,
+    type: String,
     required: true,
     trim: true,
-    min: 0,
-    max: 10
+    minlength: 10,
+    maxlength: 15
   },
   appointmentDate: {
     type: Date,

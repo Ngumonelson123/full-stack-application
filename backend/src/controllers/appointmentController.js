@@ -99,6 +99,7 @@ exports.createAppointment = async (req, res) => {
       appointment
     });
   } catch (error) {
+    console.error('❌ Appointment creation error:', error.message);
     res.status(500).json({ 
       success: false,
       error: 'Failed to create appointment' 

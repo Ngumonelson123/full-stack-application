@@ -1,9 +1,7 @@
 // frontend/src/services/api.js - CORRECTED
 import axios from 'axios';
 
-//const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
-  // SINGLE, CORRECT API_BASE_URL definition
+// SINGLE, CORRECT API_BASE_URL definition
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
@@ -13,16 +11,37 @@ const api = axios.create({
   }
 });
 
+// Add auth token to all requests
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 export const opticiansAPI = {
-  getAll: () => api.get('/opticians'), // NO /api prefix
-  getById: (id) => api.get(`/opticians/${id}`), // NO /api prefix
-  create: (data) => api.post('/opticians', data), // NO /api prefix
-  update: (id, data) => api.put(`/opticians/${id}`, data), // NO /api prefix
-  delete: (id) => api.delete(`/opticians/${id}`) // NO /api prefix
+  getAll: () => api.get('/opticians'),
+  getById: (id) => api.get(`/opticians/${id}`),
+  create: (data) => api.post('/opticians', data),
+  update: (id, data) => api.put(`/opticians/${id}`, data),
+  delete: (id) => api.delete(`/opticians/${id}`)
 };
 
 export const authAPI = {
-  register: (data) => api.post('/auth/register', data), // NO /api prefix
-  login: (data) => api.post('/auth/login', data), // NO /api prefix
-  getMe: () => api.get('/auth/me') // NO /api prefix
+  register: (data) => api.post('/auth/register', data),
+  login: (data) => api.post('/auth/login', data),
+  getMe: () => api.get('/auth/me')
 };
+
+export const appointmentsAPI = {
+  create: (data) => api.post('/appointments', data),
+  getAll: () => api.get('/appointments'),
+  update: (id, data) => api.put(`/appointments/${id}`, data),
+  delete: (id) => api.delete(`/appointments/${id}`)
+};
+
+export default api;
