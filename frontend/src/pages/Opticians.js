@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Badge } from '../components/ui';
+import { Star, Award, Briefcase, Calendar } from 'lucide-react';
 
 const Opticians = () => {
   return (

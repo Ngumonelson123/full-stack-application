@@ -121,6 +121,17 @@ exports.createAppointment = async (req, res) => {
   } catch (error) {
     console.error('❌ Appointment creation error:', error);
     console.error('Request body:', req.body);
+    
+    // Handle validation errors specifically
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map(err => err.message);
+      return res.status(400).json({ 
+        success: false,
+        error: validationErrors.join('. '),
+        field: Object.keys(error.errors)[0]
+      });
+    }
+    
     res.status(500).json({ 
       success: false,
       error: 'Failed to create appointment' 

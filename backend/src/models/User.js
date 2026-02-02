@@ -10,10 +10,16 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: [true, 'Email address is required'],
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
+    validate: {
+      validator: function(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      },
+      message: 'Please enter a valid email address'
+    }
   },
   password: {
     type: String,
@@ -26,8 +32,15 @@ const userSchema = new mongoose.Schema({
     default: 'user'
   },
   phone: {
-    type: Number,
-    trim: true
+    type: String,
+    trim: true,
+    validate: {
+      validator: function(v) {
+        if (!v) return true; // Optional field
+        return /^[\+]?[1-9][\d\s\-\(\)]{7,15}$/.test(v.replace(/\s/g, ''));
+      },
+      message: 'Please enter a valid phone number (e.g., +1 (308) 707-5814 or 0701168815)'
+    }
   },
   isActive: {
     type: Boolean,

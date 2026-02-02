@@ -52,6 +52,27 @@ exports.register = async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('❌ Registration error:', error);
+    
+    // Handle validation errors
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map(err => err.message);
+      return res.status(400).json({ 
+        success: false,
+        error: validationErrors.join('. '),
+        field: Object.keys(error.errors)[0]
+      });
+    }
+    
+    // Handle duplicate email error
+    if (error.code === 11000) {
+      return res.status(400).json({ 
+        success: false,
+        error: 'Email already registered',
+        field: 'email'
+      });
+    }
+    
     res.status(500).json({ 
       success: false,
       error: 'Registration failed. Please try again.' 

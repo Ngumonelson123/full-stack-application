@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Menu, X, Home, Glasses, Users, LogOut, Settings } from "lucide-react";
+import { EyeExamIcon } from "./OpticalIcons";
 
 const Header = () => {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
