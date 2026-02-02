@@ -67,7 +67,7 @@ const seedData = async () => {
         bio: 'With over 10 years of experience in pediatric eye care, Dr. Johnson specializes in children\'s vision development and myopia control.',
         imageUrl: '/images/opticians/dr-sarah.jpg',
         experience: 10,
-        available: true
+        isAvailable: true
       },
       {
         name: 'Dr. Michael Chen',
@@ -75,7 +75,7 @@ const seedData = async () => {
         bio: 'Dr. Chen is an expert in fitting specialty contact lenses and managing complex corneal conditions.',
         imageUrl: '/images/opticians/dr-chen.jpg',
         experience: 8,
-        available: true
+        isAvailable: true
       },
       {
         name: 'Dr. Emily Rodriguez',
@@ -83,7 +83,7 @@ const seedData = async () => {
         bio: 'Specializing in the diagnosis and management of ocular diseases including glaucoma and macular degeneration.',
         imageUrl: '/images/opticians/dr-rodriguez.jpg',
         experience: 12,
-        available: true
+        isAvailable: true
       }
     ]);
     console.log(`✅ Seeded ${opticians.length} opticians`);

@@ -102,12 +102,21 @@ app.use('/api/auth', authRoutes);
 app.use('/api/test', require('./routes/testRoutes'));
 
 // Conditionally load other routes if they exist
+// Add services API endpoint
 try {
   const servicesRoutes = require('./routes/services');
   app.use('/api/services', servicesRoutes);
   console.log('✅ Services routes loaded');
 } catch (error) {
   console.warn('⚠️  Services routes not found:', error.message);
+  // Fallback: Add basic services endpoint
+  try {
+    const servicesAPI = require('./routes/servicesAPI');
+    app.use('/api/services', servicesAPI);
+    console.log('✅ Basic services API loaded');
+  } catch (fallbackError) {
+    console.warn('⚠️  Could not load services API:', fallbackError.message);
+  }
 }
 
 try {
@@ -116,6 +125,14 @@ try {
   console.log('✅ Opticians routes loaded');
 } catch (error) {
   console.warn('⚠️  Opticians routes not found:', error.message);
+  // Fallback: Add basic opticians endpoint
+  try {
+    const opticiansAPI = require('./routes/opticiansAPI');
+    app.use('/api/opticians', opticiansAPI);
+    console.log('✅ Basic opticians API loaded');
+  } catch (fallbackError) {
+    console.warn('⚠️  Could not load opticians API:', fallbackError.message);
+  }
 }
 
 try {

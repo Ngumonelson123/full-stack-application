@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Appointment = require('../models/Appointment');
 const Service = require('../models/Service');
 const Optician = require('../models/Optician');
@@ -38,12 +39,31 @@ exports.createAppointment = async (req, res) => {
   try {
     const { patientName, patientEmail, patientPhone, appointmentDate, service, optician, notes } = req.body;
 
+    console.log('📝 Appointment booking request:', {
+      patientName,
+      patientEmail,
+      patientPhone,
+      appointmentDate,
+      service,
+      optician,
+      notes
+    });
+
     // Validation
     if (!patientName || !patientEmail || !patientPhone || !appointmentDate || !service || !optician) {
       return res.status(400).json({
         success: false,
         error: 'All required fields must be provided'
       });
+    }
+
+    // Validate IDs before querying DB
+    if (!mongoose.Types.ObjectId.isValid(service)) {
+      return res.status(400).json({ success: false, error: 'Invalid service id format' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(optician)) {
+      return res.status(400).json({ success: false, error: 'Invalid optician id format' });
     }
 
     // Check if service and optician exist
@@ -99,7 +119,8 @@ exports.createAppointment = async (req, res) => {
       appointment
     });
   } catch (error) {
-    console.error('❌ Appointment creation error:', error.message);
+    console.error('❌ Appointment creation error:', error);
+    console.error('Request body:', req.body);
     res.status(500).json({ 
       success: false,
       error: 'Failed to create appointment' 
