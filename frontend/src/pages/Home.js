@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button, Card, Badge } from '../components/ui';
+import { Calendar, ArrowRight, Phone, Check, MapPin, Clock } from 'lucide-react';
 
 const Home = () => {
   const { user } = useAuth();
@@ -84,11 +85,7 @@ const Home = () => {
                   <Button 
                     size="lg" 
                     className="w-full sm:w-auto bg-white text-primary-800 hover:bg-primary-50 shadow-2xl hover:shadow-primary-500/25 transform hover:scale-105 transition-all duration-300"
-                    icon={
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    }
+                    icon={<Calendar className="w-5 h-5" />}
                   >
                     Book Appointment
                   </Button>
@@ -99,11 +96,7 @@ const Home = () => {
                     variant="outline" 
                     size="lg" 
                     className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-primary-800 shadow-2xl backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
-                    icon={
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    }
+                    icon={<ArrowRight className="w-5 h-5" />}
                   >
                     Our Services
                   </Button>
@@ -167,8 +160,12 @@ const Home = () => {
                     className="text-center bg-dark-200 border-dark-300 group"
                   >
                     <div className="text-primary-600 mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
-                    </div>
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="w-12 h-12 rounded-md object-cover mx-auto"
+                          />
+                        </div>
                     <h3 className="text-lg font-bold text-dark-800 mb-2 group-hover:text-primary-600 transition-colors duration-300">
                       {feature.title}
                     </h3>
@@ -227,15 +224,11 @@ const Home = () => {
             ))}
           </div>
           
-          <div className="text-center mt-8">
+            <div className="text-center mt-8">
             <Link to="/services">
               <Button 
                 size="lg"
-                icon={
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                }
+                  icon={<ArrowRight className="w-5 h-5" />}
                 iconPosition="right"
               >
                 Explore All Services
@@ -356,15 +349,11 @@ const Home = () => {
             <div className="mt-8 pt-6 border-t border-dark-300">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-dark-600 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center sm:justify-start space-x-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  </svg>
+                  <MapPin className="w-5 h-5" />
                   <span className="font-semibold">Eldoret Town, Kenya</span>
                 </div>
                 <div className="flex items-center justify-center sm:justify-end space-x-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <Clock className="w-5 h-5" />
                   <span className="font-semibold">Mon-Fri 8AM-7PM, Sat 9AM-4PM</span>
                 </div>
               </div>
@@ -379,38 +368,22 @@ const Home = () => {
 // Data arrays with proper SVG icons
 const features = [
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-      </svg>
-    ),
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
     title: 'Expert Optometrists',
     description: 'Certified professionals with extensive experience'
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
+    image: 'https://images.unsplash.com/photo-1580281657527-3b3f31d4b1a4?auto=format&fit=crop&w=400&q=80',
     title: 'Modern Equipment',
     description: 'State-of-the-art diagnostic technology'
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
+    image: 'https://images.unsplash.com/photo-1502630841787-4b9662a9b5d4?auto=format&fit=crop&w=400&q=80',
     title: 'Patient Care',
     description: 'Personalized attention for each patient'
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-      </svg>
-    ),
+    image: 'https://images.unsplash.com/photo-1524504388940-1f4a9d0a9a0f?auto=format&fit=crop&w=400&q=80',
     title: 'Quality Service',
     description: 'Excellence in every aspect of eye care'
   }
@@ -419,27 +392,33 @@ const features = [
 const services = [
   {
     title: "Comprehensive Eye Exams",
-    description: "State-of-the-art diagnostic technology for precise results. Advanced equipment for accurate vision assessment and eye health screening."
+    description: "State-of-the-art diagnostic technology for precise results. Advanced equipment for accurate vision assessment and eye health screening.",
+    image: 'https://images.unsplash.com/photo-1580281657527-3b3f31d4b1a4?auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: "Prescription Glasses & Lenses",
-    description: "A wide selection of high-quality frames and lenses from top international brands. Customized to your prescription and style preferences."
+    description: "A wide selection of high-quality frames and lenses from top international brands. Customized to your prescription and style preferences.",
+    image: 'https://images.unsplash.com/photo-1520975928713-1d3c4a9c9b9a?auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: "Contact Lenses",
-    description: "Soft, rigid, and specialty lenses to suit your lifestyle. Professional fitting and follow-up care included."
+    description: "Soft, rigid, and specialty lenses to suit your lifestyle. Professional fitting and follow-up care included.",
+    image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: "Sunglasses",
-    description: "UV protection paired with the latest stylish designs. Prescription sunglasses available for vision correction."
+    description: "UV protection paired with the latest stylish designs. Prescription sunglasses available for vision correction.",
+    image: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: "Children's Eye Care",
-    description: "Specialized services tailored for our young patients. Early detection and management of vision problems in children."
+    description: "Specialized services tailored for our young patients. Early detection and management of vision problems in children.",
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: "Corporate Vision Care",
-    description: "Customized eye screening programs for businesses. Group packages and corporate discounts available."
+    description: "Customized eye screening programs for businesses. Group packages and corporate discounts available.",
+    image: 'https://images.unsplash.com/photo-1527259934561-3d8f1f7f6f6f?auto=format&fit=crop&w=1200&q=80'
   }
 ];
 

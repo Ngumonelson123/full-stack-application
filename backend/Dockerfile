@@ -1,5 +1,5 @@
 # Backend Dockerfile
-FROM node:18-alpine AS base
+FROM node:18-slim
 
 # Set working directory
 WORKDIR /app
@@ -8,14 +8,14 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Copy source code
 COPY src/ ./src/
 
 # Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S backend -u 1001
+RUN groupadd -g 1001 nodejs && \
+    useradd -u 1001 -g nodejs -m backend
 
 # Change ownership
 RUN chown -R backend:nodejs /app

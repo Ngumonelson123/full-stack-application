@@ -11,5 +11,4 @@ README.md
 .env.production.local
 .nyc_output
 coverage
-build
 .DS_Store

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Badge } from '../components/ui';
-import { Eye, Glasses, Settings, Users, Award, Clock, CheckCircle, Heart } from 'lucide-react';
+import { Eye, Glasses, Settings, Users, Award, Clock, CheckCircle, Heart, Calendar } from 'lucide-react';
 
 const ServiceIcon = ({ type, className = "w-6 h-6 text-white" }) => {
   const iconMap = {
@@ -47,28 +47,35 @@ const Services = () => {
                 key={index} 
                 hover 
                 padding="lg" 
-                className="group bg-dark-100 border-dark-300 hover:border-primary-500 transition-all duration-300 h-full"
+                className="group bg-dark-100 border-dark-300 hover:border-primary-500 transition-all duration-300 h-full flex flex-col"
               >
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <ServiceIcon type={service.icon} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-dark-800 group-hover:text-primary-600 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-primary-600 font-medium">{service.price}</p>
+                <div className="mb-4">
+                  {service.image && (
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-40 object-cover rounded-md mb-4"
+                    />
+                  )}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <ServiceIcon type={service.icon} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-dark-800 group-hover:text-primary-600 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-primary-600 font-medium">{service.price}</p>
+                    </div>
                   </div>
                 </div>
-                
+
                 <p className="text-dark-700 leading-relaxed mb-6">{service.description}</p>
                 
                 <div className="space-y-3 mb-6">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                       <span className="text-dark-600">{feature}</span>
                     </div>
                   ))}
@@ -78,11 +85,7 @@ const Services = () => {
                   <Link to="/appointments">
                     <Button 
                       className="w-full"
-                      icon={
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      }
+                      icon={<Calendar className="w-4 h-4" />}
                     >
                       Book Now
                     </Button>
@@ -175,6 +178,7 @@ const services = [
     title: "Comprehensive Eye Exams",
     price: "From KSh 2,500",
     description: "Complete eye health assessment using advanced diagnostic equipment to detect vision problems and eye diseases early.",
+    image: 'https://images.unsplash.com/photo-1580281657527-3b3f31d4b1a4?auto=format&fit=crop&w=1200&q=80',
     icon: "eye",
     features: [
       "Digital retinal imaging",
@@ -188,6 +192,7 @@ const services = [
     title: "Prescription Glasses",
     price: "From KSh 3,500",
     description: "Wide selection of high-quality frames and lenses from top brands, customized to your prescription and lifestyle needs.",
+    image: 'https://images.unsplash.com/photo-1520975928713-1d3c4a9c9b9a?auto=format&fit=crop&w=1200&q=80',
     icon: "glasses",
     features: [
       "Single vision lenses",
@@ -201,6 +206,7 @@ const services = [
     title: "Contact Lenses",
     price: "From KSh 1,800",
     description: "Professional contact lens fitting and comprehensive selection of daily, weekly, and monthly contact lenses for all vision needs.",
+    image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80',
     icon: "settings",
     features: [
       "Daily disposable lenses",
@@ -214,6 +220,7 @@ const services = [
     title: "Pediatric Eye Care",
     price: "From KSh 2,000",
     description: "Specialized eye care for children including vision screening, lazy eye treatment, and child-friendly eye exams.",
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80',
     icon: "heart",
     features: [
       "Child-friendly examinations",
@@ -227,6 +234,7 @@ const services = [
     title: "Low Vision Services",
     price: "From KSh 3,000",
     description: "Specialized care and assistive devices for patients with low vision to maximize remaining sight and independence.",
+    image: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
     icon: "users",
     features: [
       "Low vision assessment",
@@ -240,6 +248,7 @@ const services = [
     title: "Dry Eye Treatment",
     price: "From KSh 1,500",
     description: "Comprehensive evaluation and treatment of dry eye syndrome using advanced diagnostic tools and therapies.",
+    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80',
     icon: "check",
     features: [
       "Tear film analysis",
