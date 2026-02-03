@@ -330,7 +330,7 @@ const Home = () => {
                 </Button>
               </Link>
               
-              <a href="tel:+254719530732">
+              <a href={`tel:${process.env.REACT_APP_PHONE_NUMBER || '+254719530732'}`}>
                 <Button 
                   variant="outline" 
                   size="lg" 
@@ -341,7 +341,7 @@ const Home = () => {
                     </svg>
                   }
                 >
-                  Call: 0719 530 732
+                  Call: {process.env.REACT_APP_PHONE_NUMBER || '0719 530 732'}
                 </Button>
               </a>
             </div>
