@@ -375,6 +375,3 @@ For support, open an issue on GitHub or contact the maintainer.
 
 ---
 
-⭐ **Star this repo if you find it helpful!**
-
-📝 **Made with ❤️ by Nelson Ngumo**
