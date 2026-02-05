@@ -42,7 +42,7 @@ A modern, full-stack web application for managing optical clinic operations, inc
 
 ## 🚀 Live Demo
 
-- **Frontend**: https://fovea-opticals-frontend.onrender.com
+- **Frontend**: https://fovea-opticals-frontend-wno1.onrender.com
 - **Backend API**: https://fovea-opticals-backend.onrender.com
 - **Health Check**: https://fovea-opticals-backend.onrender.com/api/health
 - **Docker Hub**: https://hub.docker.com/u/ngumonelson123
