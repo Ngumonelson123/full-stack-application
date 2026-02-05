@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { appointmentsAPI } from "../services/api";
-import axios from "axios";
+import api from "../services/api";
 
 const BookAppointment = () => {
   const navigate = useNavigate();
@@ -20,16 +20,13 @@ const BookAppointment = () => {
   const [services, setServices] = useState([]);
   const [opticians, setOpticians] = useState([]);
 
-  const API_BASE_URL =
-    process.env.REACT_APP_API_URL || "http://localhost:5000/api";
-
   // Fetch services and opticians on mount
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         const [servicesRes, opticiansRes] = await Promise.all([
-          axios.get(`${API_BASE_URL}/services`),
-          axios.get(`${API_BASE_URL}/opticians`),
+          api.get('/services'),
+          api.get('/opticians'),
         ]);
 
         if (servicesRes.data.services) {
@@ -100,12 +97,8 @@ const BookAppointment = () => {
 
       console.log("Appointment response:", response.data);
 
-      if (response.data.success) {
-        alert("Appointment booked successfully! We will contact you shortly.");
-        navigate("/");
-      } else {
-        setError(response.data.error || "Failed to book appointment");
-      }
+      alert("Appointment booked successfully! We will contact you shortly.");
+      navigate("/");
     } catch (err) {
       console.error("Error booking appointment:", err);
       setError(

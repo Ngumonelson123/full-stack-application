@@ -368,22 +368,22 @@ const Home = () => {
 // Data arrays with proper SVG icons
 const features = [
   {
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80',
     title: 'Expert Optometrists',
     description: 'Certified professionals with extensive experience'
   },
   {
-    image: 'https://images.unsplash.com/photo-1580281657527-3b3f31d4b1a4?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1574068468668-a05a11f871da?auto=format&fit=crop&w=400&q=80',
     title: 'Modern Equipment',
     description: 'State-of-the-art diagnostic technology'
   },
   {
-    image: 'https://images.unsplash.com/photo-1502630841787-4b9662a9b5d4?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=400&q=80',
     title: 'Patient Care',
     description: 'Personalized attention for each patient'
   },
   {
-    image: 'https://images.unsplash.com/photo-1524504388940-1f4a9d0a9a0f?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=400&q=80',
     title: 'Quality Service',
     description: 'Excellence in every aspect of eye care'
   }

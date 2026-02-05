@@ -178,7 +178,7 @@ const services = [
     title: "Comprehensive Eye Exams",
     price: "From KSh 2,500",
     description: "Complete eye health assessment using advanced diagnostic equipment to detect vision problems and eye diseases early.",
-    image: 'https://images.unsplash.com/photo-1580281657527-3b3f31d4b1a4?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1574068468668-a05a11f871da?auto=format&fit=crop&w=1200&q=80',
     icon: "eye",
     features: [
       "Digital retinal imaging",
@@ -192,7 +192,7 @@ const services = [
     title: "Prescription Glasses",
     price: "From KSh 3,500",
     description: "Wide selection of high-quality frames and lenses from top brands, customized to your prescription and lifestyle needs.",
-    image: 'https://images.unsplash.com/photo-1520975928713-1d3c4a9c9b9a?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=1200&q=80',
     icon: "glasses",
     features: [
       "Single vision lenses",
@@ -206,7 +206,7 @@ const services = [
     title: "Contact Lenses",
     price: "From KSh 1,800",
     description: "Professional contact lens fitting and comprehensive selection of daily, weekly, and monthly contact lenses for all vision needs.",
-    image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80',
     icon: "settings",
     features: [
       "Daily disposable lenses",
@@ -220,7 +220,7 @@ const services = [
     title: "Pediatric Eye Care",
     price: "From KSh 2,000",
     description: "Specialized eye care for children including vision screening, lazy eye treatment, and child-friendly eye exams.",
-    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
     icon: "heart",
     features: [
       "Child-friendly examinations",
@@ -234,7 +234,7 @@ const services = [
     title: "Low Vision Services",
     price: "From KSh 3,000",
     description: "Specialized care and assistive devices for patients with low vision to maximize remaining sight and independence.",
-    image: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=1200&q=80',
     icon: "users",
     features: [
       "Low vision assessment",
@@ -248,7 +248,7 @@ const services = [
     title: "Dry Eye Treatment",
     price: "From KSh 1,500",
     description: "Comprehensive evaluation and treatment of dry eye syndrome using advanced diagnostic tools and therapies.",
-    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1200&q=80',
     icon: "check",
     features: [
       "Tear film analysis",

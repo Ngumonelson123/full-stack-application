@@ -150,7 +150,7 @@ const Opticians = () => {
 const opticians = [
   {
     name: "Dr. Sarah Kimani",
-    photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80',
     specialty: "Senior Optometrist",
     experience: "12",
     bio: "Specializes in comprehensive eye exams, contact lens fitting, and pediatric eye care. Passionate about early detection of eye diseases.",
@@ -158,7 +158,7 @@ const opticians = [
   },
   {
     name: "Dr. James Mwangi",
-    photo: 'https://images.unsplash.com/photo-1531123414780-f5b5c0f3246b?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80',
     specialty: "Clinical Optometrist", 
     experience: "8",
     bio: "Expert in advanced diagnostic techniques and treatment of complex vision problems. Focuses on precision and patient comfort.",
@@ -166,7 +166,7 @@ const opticians = [
   },
   {
     name: "Dr. Grace Wanjiku",
-    photo: 'https://images.unsplash.com/photo-1545996124-1f5d5e06a6d9?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80',
     specialty: "Dispensing Optician",
     experience: "10",
     bio: "Specializes in frame selection and lens customization. Helps patients find the perfect eyewear for their lifestyle and needs.",
@@ -174,7 +174,7 @@ const opticians = [
   },
   {
     name: "Dr. Peter Ochieng",
-    photo: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80',
     specialty: "Therapeutic Optometrist",
     experience: "15",
     bio: "Focuses on treatment and management of eye diseases. Experienced in pre and post-operative care for eye surgeries.",
@@ -182,7 +182,7 @@ const opticians = [
   },
   {
     name: "Dr. Mary Akinyi",
-    photo: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
     specialty: "Sports Vision Specialist",
     experience: "6",
     bio: "Specializes in sports vision enhancement and protective eyewear. Helps athletes optimize their visual performance.",
@@ -190,7 +190,7 @@ const opticians = [
   },
   {
     name: "Dr. David Kiprop",
-    photo: 'https://images.unsplash.com/photo-1531123414780-6f0b9b6b9b0a?auto=format&fit=crop&w=400&q=80',
+    photo: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=400&q=80',
     specialty: "Geriatric Optometrist",
     experience: "14",
     bio: "Expert in age-related vision problems and low vision rehabilitation. Dedicated to helping seniors maintain their independence.",

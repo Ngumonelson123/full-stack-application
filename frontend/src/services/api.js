@@ -1,8 +1,8 @@
 // frontend/src/services/api.js - CORRECTED
 import axios from 'axios';
 
-// SINGLE, CORRECT API_BASE_URL definition
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// API Base URL - use environment variable in production, relative path in development
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

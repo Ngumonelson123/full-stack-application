@@ -25,10 +25,10 @@ const appointmentSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: function(v) {
-        // Allow various phone formats: +1 (308) 707-5814, 0701168815, +254701168815, etc.
-        return /^[\+]?[1-9][\d\s\-\(\)]{7,15}$/.test(v.replace(/\s/g, ''));
+        // Allow Kenyan and international phone formats
+        return /^[\+]?[0-9][\d\s\-\(\)]{7,20}$/.test(v.replace(/\s/g, ''));
       },
-      message: 'Please enter a valid phone number (e.g., +1 (308) 707-5814 or 0701168815)'
+      message: 'Please enter a valid phone number'
     }
   },
   appointmentDate: {

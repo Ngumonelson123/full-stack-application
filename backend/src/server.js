@@ -7,24 +7,13 @@ require('dotenv').config();
 
 const app = express();
 
-// CORS Configuration for production
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://fovea-opticals-frontend.onrender.com', // Your frontend on Render
-  'https://fovea-opticals-mern.onrender.com' // Your backend on Render
-];
+// CORS Configuration
+const allowedOrigins = process.env.FRONTEND_URL 
+  ? [process.env.FRONTEND_URL, 'http://localhost:3000']
+  : true;
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
