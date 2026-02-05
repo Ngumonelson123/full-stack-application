@@ -45,6 +45,9 @@ A modern, full-stack web application for managing optical clinic operations, inc
 - **Frontend**: https://fovea-opticals-frontend.onrender.com
 - **Backend API**: https://fovea-opticals-backend.onrender.com
 - **Health Check**: https://fovea-opticals-backend.onrender.com/api/health
+- **Docker Hub**: https://hub.docker.com/u/ngumonelson123
+
+> **Note**: Free tier services may take 30-60 seconds to wake up after inactivity.
 
 ## 📦 Installation
 
@@ -182,6 +185,25 @@ Production: https://fovea-opticals-backend.onrender.com/api
 Local: http://localhost:5000/api
 ```
 
+### Example Request
+```bash
+# Get all services
+curl https://fovea-opticals-backend.onrender.com/api/services
+
+# Book an appointment
+curl -X POST https://fovea-opticals-backend.onrender.com/api/appointments \
+  -H "Content-Type: application/json" \
+  -d '{
+    "patientName": "John Doe",
+    "patientEmail": "john@example.com",
+    "patientPhone": "0712345678",
+    "appointmentDate": "2026-02-15T10:00:00",
+    "service": "SERVICE_ID",
+    "optician": "OPTICIAN_ID",
+    "notes": "First visit"
+  }'
+```
+
 ### Endpoints
 
 #### Services
@@ -219,6 +241,11 @@ npm test
 # Frontend tests
 cd frontend
 npm test
+
+# Test appointment booking locally
+curl -X POST http://localhost:5000/api/appointments \
+  -H "Content-Type: application/json" \
+  -d '{"patientName":"Test User","patientEmail":"test@test.com","patientPhone":"0712345678","appointmentDate":"2026-02-15T10:00:00","service":"SERVICE_ID","optician":"OPTICIAN_ID"}'
 ```
 
 ## 📊 Database Schema
@@ -265,9 +292,25 @@ npm test
 
 1. Fork the repository
 2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+3. Commit changes (`git commit -m 'Add AmazingFeature' --no-verify`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open Pull Request
+
+### Development Workflow
+
+```bash
+# Create feature branch
+git checkout -b feature/new-feature
+
+# Make changes and commit
+git add .
+git commit -m "Add new feature" --no-verify
+
+# Push to GitHub (triggers CI/CD)
+git push origin feature/new-feature
+
+# Render auto-deploys on merge to master
+```
 
 ## 📝 License
 
@@ -288,8 +331,50 @@ This project is licensed under the MIT License.
 
 ## 📞 Support
 
-For support, email your-email@example.com or open an issue on GitHub.
+For support, open an issue on GitHub or contact the maintainer.
+
+## 🎯 Project Status
+
+- ✅ Backend deployed and running on Render
+- ✅ Frontend deployed and running on Render
+- ✅ MongoDB Atlas database connected
+- ✅ Docker images published to Docker Hub
+- ✅ CI/CD pipeline with GitHub Actions
+- ✅ Appointment booking system functional
+- ✅ Services and opticians management
+- ✅ Responsive design for all devices
+
+## 📈 Future Enhancements
+
+- [ ] Admin dashboard for managing appointments
+- [ ] Email notifications for appointments
+- [ ] SMS reminders for patients
+- [ ] Payment integration
+- [ ] Patient portal with appointment history
+- [ ] Real-time availability calendar
+- [ ] Multi-language support
+- [ ] Analytics and reporting
+
+## 🔐 Security
+
+- JWT-based authentication
+- Password hashing with bcryptjs
+- CORS configuration for API security
+- Environment variables for sensitive data
+- Input validation and sanitization
+- MongoDB injection prevention
+
+## 📊 Performance
+
+- Docker containerization for consistent deployments
+- Nginx for efficient static file serving
+- MongoDB indexing for fast queries
+- React code splitting for faster load times
+- Gzip compression enabled
+- CDN-ready architecture
 
 ---
 
-⭐ Star this repo if you find it helpful!
+⭐ **Star this repo if you find it helpful!**
+
+📝 **Made with ❤️ by Nelson Ngumo**
